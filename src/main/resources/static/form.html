@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Form</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <h2>Get method</h2>
+    <form action="/hello">
+        <label for="name">name:</label><br>
+        <input type="text" id="nameGet" name="nameGet"><br>
+        <button type="button" onclick="updateGet()">Submit</button>
+    </form>
+    <div id="getMethod"></div>
+
+    <script>
+        function updateGet() {
+            name = document.getElementsByName("nameGet")[0].value;
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                document.getElementById("getMethod").innerHTML =
+                    this.responseText;
+            }
+            if(name != null){
+                xhttp.open("GET", "/hello?name=" + name);
+                xhttp.send();
+            }else{
+                xhttp.open("GET", "/hello");
+                xhttp.send();
+            }
+        }
+
+        function updatePost() {
+            name = document.getElementsByName("namePost")[0].value;
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function () {
+                document.getElementById("postMethod").innerHTML =
+                    this.responseText;
+            }
+            if (name != null) {
+                xhttp.open("POST", "/post?name=" + name);
+                xhttp.send();
+            } else {
+                xhttp.open("POST", "/post");
+                xhttp.send();
+            }
+        }
+    </script>
+
+    <h2>Post method</h2>
+    <form action="/post" method="post">
+        <label for="name">name:</label><br>
+        <input type="text" id="namePost" name="namePost"><br>
+        <button type="button" onclick="updatePost()">Submit</button>
+    </form>
+    <div id="postMethod"></div>
+
+</html>
