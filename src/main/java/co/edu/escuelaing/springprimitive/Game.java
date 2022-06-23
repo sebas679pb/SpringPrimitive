@@ -10,18 +10,33 @@ public class Game {
     private ArrayList<Integer> number;
     private int numAttempts;
 
+    /**
+     * Metodo que llama la instancia del juego.
+     * @return Instancia singleton del juego.
+     */
     public static Game getInstance() {
         return _instance;
     }
 
+    /**
+     * Retorna el numero a adivinar como un arreglo elemento a elemento.
+     * @return ArrayList del numero.
+     */
     public ArrayList<Integer> getNumber() {
         return number;
     }
     
+    /**
+     * Retorna el numero de intentos que se han realizado
+     * @return Numero de intentos realizados.
+     */
     public int getNumAttempts() {
         return numAttempts;
     }
 
+    /**
+     * Metodo que inicializa el juego setteando sus parametros de inicio.
+     */
     public void gameInit() {
         numAttempts = 0;
         number = new ArrayList<Integer>();
@@ -33,6 +48,11 @@ public class Game {
         }
     }
 
+    /**
+     * Metodo que compara el numero ingresado y contabiliza las picas y famas.
+     * @param playerInput
+     * @return Picas y famas obtenidas.
+     */
     public String PlayerAttempt(String playerInput) {
         String message;
         int picas = 0, famas = 0;
