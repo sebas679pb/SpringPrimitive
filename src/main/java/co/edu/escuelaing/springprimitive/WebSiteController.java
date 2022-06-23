@@ -35,4 +35,17 @@ public class WebSiteController {
         return String.format("Hello %s!", name);
     }
 
+    @GetMapping("/gameInit")
+    public String gameInit() {
+        Game game = Game.getInstance();
+        game.gameInit();
+        return game.getNumber().toString();
+    }
+
+    @GetMapping("/playerAttempt")
+    public String playerAttempt(@RequestParam(value = "number", defaultValue = "1234") String number) {
+        Game game = Game.getInstance();
+        return game.PlayerAttempt(number);
+    }
+    
 }
